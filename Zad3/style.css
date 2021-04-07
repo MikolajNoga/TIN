@@ -1,0 +1,102 @@
+@media print {
+  nav {
+    display: none;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding-left: 15em;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: purple;
+  background-color: lightgray;
+}
+
+header {
+  padding-top: 10px;
+}
+
+h1,
+h2 {
+  font-family: Helvetica, Geneva, Arial, SunSans-Regular, sans-serif;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  top: 2em;
+  left: 1em;
+  width: 9em;
+}
+
+#education_nav:hover {
+  height: 15em;
+}
+
+#education_nav:hover > #school_list {
+  display: block;
+}
+
+#school_list {
+  top: 7em;
+  left: 1em;
+  width: 9em;
+  display: none;
+}
+
+#school_list li {
+  background: whitesmoke;
+}
+
+nav li {
+  background: white;
+  margin: 0.5em 0;
+  padding: 0.3em;
+  border-right: 1em solid black;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+footer {
+  margin-top: 1em;
+  padding-top: 1em;
+  border-top: thin dotted;
+}
+
+section {
+  padding-top: 25px;
+}
+
+#interests h2 {
+  padding-bottom: 10px;
+}
+
+#interests h3 {
+  padding-top: 25px;
+  padding-bottom: 10px;
+}
+
+ol {
+  list-style-type: upper-roman;
+}
+
+ol li ul {
+  padding: 10px 20px 10px;
+}
+
+.albumName {
+  font-style: italic;
+}
+
+.author {
+  text-transform: capitalize;
+}

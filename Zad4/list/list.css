@@ -1,0 +1,27 @@
+ul {
+  list-style-type: none;
+}
+
+.icon {
+  position: absolute;
+  transform: translateX(-15px);
+  height: 15px;
+  width: 15px;
+  background: url("icons.png");
+}
+
+.icon:hover {
+  cursor: pointer;
+}
+
+.open .icon {
+  background-position: 1vw;
+}
+
+.open ul .closed .icon {
+  background-position: 0px 0px;
+}
+
+.open ul .leaf .icon {
+  background-position: 0px 15px;
+}

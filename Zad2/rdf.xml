@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<rdf:RDF
+xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:foaf = "http://xmlns.com/foaf/0.1/"
+xmlns:bio = "http://purl.org/vocab/bio/0.1/"
+>
+
+<foaf:Person rdf:ID="mnoga">
+   <foaf:name>Mikołaj Noga</foaf:name>
+   <foaf:gender>Male</foaf:gender>
+   <foaf:givenname>Mikołaj</foaf:givenname>
+   <foaf:family_name>Noga</foaf:family_name>
+
+   <bio:Graduation>
+      <foaf:Organization rdf:ID="szkolaPodstawowa">
+         <foaf:name>Szkoła Podstawowa</foaf:name>
+         <foaf:homepage rdf:resource="https://psp1starogardgd.edupage.org"/>
+      </foaf:Organization>
+   </bio:Graduation>
+
+   <bio:Graduation>
+      <foaf:Organization rdf:ID="gimanzium">
+         <foaf:name>Gimnazium</foaf:name>
+         <foaf:homepage rdf:resource="http://www.pg3.starogard.pl"/>
+      </foaf:Organization>
+   </bio:Graduation>
+
+  <bio:Graduation>
+      <foaf:Organization rdf:ID="liceum">
+         <foaf:name>liceum</foaf:name>
+         <foaf:homepage rdf:resource="http://www.lo.internetdsl.pl"/>
+      </foaf:Organization>
+   </bio:Graduation>
+
+   <bio:Graduation>
+      <foaf:Organization rdf:ID="pja">
+         <foaf:name>Polsko-Japońska Akademia Technik Komputerowych</foaf:name>
+         <foaf:homepage rdf:resource="https://gdansk.pja.edu.pl/pl/"/>
+      </foaf:Organization>
+   </bio:Graduation>
+   <bio:position>absolwent</bio:position>
+</foaf:Person>
+
+</rdf:RDF>
