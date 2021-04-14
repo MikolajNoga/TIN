@@ -1,0 +1,62 @@
+title {
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+nav {
+  background-color: deepskyblue;
+  height: 40px;
+  text-align: right;
+  padding-top: 10px;
+}
+
+nav div {
+  display: inline;
+  text-decoration: none;
+  margin-right: 50px;
+}
+
+input {
+  line-height: 20px;
+}
+
+#search {
+  float: right;
+  margin-right: 20px;
+}
+
+@media only screen and (max-width: 800px) {
+  nav div {
+    margin: 40px;
+  }
+
+  nav {
+    text-align: center;
+    height: 70px;
+  }
+  #search {
+    margin-top: 30px;
+    margin-left: 10px;
+    position: absolute;
+    float: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  nav {
+    height: 100%;
+  }
+
+  #search {
+    position: relative;
+  }
+
+  nav div {
+    display: list-item;
+    list-style: none;
+  }
+}

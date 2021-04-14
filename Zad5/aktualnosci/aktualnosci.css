@@ -1,0 +1,19 @@
+h2 {
+  background-color: lightgrey;
+}
+
+h2 time {
+  float: right;
+  color: gray;
+}
+
+img {
+  float: left;
+  margin-bottom: 15px;
+  margin-right: 10px;
+}
+
+article {
+  text-align: left;
+  clear: both;
+}
