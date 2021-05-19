@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dane osobowe</title>
+    <meta charset="utf-8"/>
+    <script>
+
+      function complete(from){
+        if (document.getElementById('mezczyzna').checked == false && document.getElementById('kobieta').checked == false && 
+        form.PESEL.value.length == 11){
+          if (getSexFromPESEL(form.PESEL.value) == 'Mężczyzna'){
+            document.getElementById('mezczyzna').checked = true;
+          } else {
+            document.getElementById('kobieta').checked = true;
+          }
+        }
+        if(!form.dateOfBirth.value && form.PESEL.value.length == 11){
+          var d = getDateOfBirthFromPESEL(form.PESEL.value), month = '' + 
+          (d.getMonth() + 1), day = '' + d.getDate(), year = d.getFullYear();
+
+          if (month.length < 2) 
+            month = '0' + month;
+          if (day.length < 2) 
+            day = '0' + day;
+
+          document.getElementById('dateOfBirth').value = [year, month, day].join('-');
+        }
+      }
+
+      function show(form){
+
+        if(form.poprawnyPesel.checked == false || peselValidation(form.PESEL.value, form.plec.value, form.dateOfBirth.valueAsDate)){
+            alert('Imię: '+ form.firstName.value + '\nNazwisko: ' + form.lastName.value + '\nPesel: ' + 
+            form.PESEL.value + '\nPłeć: ' + form.plec.value + '\nData urodzenia: ' + form.dateOfBirth.value);    
+        } else {
+            alert('Podano niepoprawny PESEL');
+        }
+      }
+
+      function peselValidation(pesel, plec, dataUrodzenia){
+        // Walidacja daty urodzenia
+        if(getDateOfBirthFromPESEL(pesel).getDate() != dataUrodzenia.getDate()){
+            alert('Data Urodzenia nie zgadza się z PESELem');
+        }
+
+        //Walidacja płci
+        if(getSexFromPESEL(pesel) != plec){
+            alert('Płeć nie zgadza się z PESELem');
+        }
+        
+        //Walidacja poprawności PESELU
+        var wagi = [9,7,3,1,9,7,3,1,9,7];
+        var suma = 0;
+    
+        for(var i=0;i<wagi.length;i++) {
+            suma+=(parseInt(pesel.substring(i,i+1),10) * wagi[i]);
+        }
+        suma=suma % 10;
+        var valid=(suma===parseInt(pesel.substring(10,11),10));
+        return valid;
+    } 
+
+    function getDateOfBirthFromPESEL(pesel){
+        var rok = parseInt(pesel.substring(0,2),10);
+        var miesiac = parseInt(pesel.substring(2,4),10)-1;
+        var dzien = parseInt(pesel.substring(4,6),10);
+    
+        if (miesiac>80) {
+            rok = rok + 1800;
+            miesiac = miesiac - 80;
+        } else if (miesiac > 60) {
+            rok = rok + 2200;
+            miesiac = miesiac - 60;
+        } else if (miesiac > 40) {
+            rok = rok + 2100;
+            miesiac = miesiac - 40;
+        } else if (miesiac > 20) {
+            rok = rok + 2000;
+            miesiac = miesiac - 20;
+        } else {
+            rok += 1900;
+        }
+        return new Date(rok, miesiac, dzien);
+    }
+
+    function getSexFromPESEL(pesel){
+      if(parseInt(pesel.substring(9,10),10) % 2 === 1) { 
+            var plec='Mężczyzna';
+        } else {
+            var plec='Kobieta';
+        }
+        return plec;
+    }
+
+    </script>
+   </head>
+   <body>
+   <form onsubmit='show(this); return false;' id="form">
+      <div><label for='firstNameField'>Imię:</label> 
+         <input type="text" name='firstName' id='firstNameField' required='required' placeholder='Wpisz swoje imię' autofocus='autofocus' /><br/>
+      </div>
+      <div style="margin-top: 5px;"><label for="lastNameField">Nazwisko:</label>
+        <input type="text" name='lastName' id='lastNameField' required='required' placeholder='Wpisz swoje nazwisko'/>
+      </div>
+      <div style="margin-top: 5px;"><label for="PESELField">PESEL:</label>
+        <input type="text" name='PESEL' id='PESEL' required='required' placeholder='Wpisz swój PESEL' onchange="complete(form)"/>
+        <label>Poprawny PESEL: </label><input type="checkbox" name="poprawnyPesel" checked="true">
+      </div>
+      <div style="margin-top: 5px;"><label for="PlecField">Płeć: </label>
+        <label><input type="radio" name="plec" id="kobieta" value="Kobieta"> Kobieta</label>
+        <label><input type="radio" name="plec" id="mezczyzna" value="Mężczyzna"> Mężczyzna</label>
+      </div>
+      <div style="margin-top: 5px;"><label for="dateOfBirthField">Data urodzenia: </label>
+        <input type="date" name="dateOfBirth" id="dateOfBirth">
+      </div>
+      <div style="margin-top: 5px;">
+        <input type="submit" name="submit" id="submit">
+      </div>
+   </form>
+   </body>
+</html>
